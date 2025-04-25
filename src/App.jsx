@@ -91,12 +91,14 @@ export default function TLPWissen() {
       {filtered.map((item, idx) => (
         <div
           key={idx}
-          className="bg-white shadow-md rounded p-4 border border-gray-100 cursor-pointer"
+          className="bg-white shadow-md rounded p-4 border border-gray-100 cursor-pointer transition-colors hover:bg-gray-50"
           onClick={() => toggleAnswer(idx)}
         >
           <h2 className="text-lg font-semibold mb-2">{item.question}</h2>
           {openIndex === idx && (
-            <p className="text-gray-700 mt-2 transition-opacity duration-300 ease-in-out">{item.answer}</p>
+            <div className="mt-2 p-3 rounded bg-green-100 border border-green-300 text-green-900 animate-fade-in">
+              ✅ {item.answer}
+            </div>
           )}
         </div>
       ))}
@@ -104,6 +106,16 @@ export default function TLPWissen() {
       {filtered.length === 0 && (
         <p className="text-center text-gray-500 mt-6">Keine Einträge gefunden.</p>
       )}
+
+      <style jsx>{`
+        @keyframes fade-in {
+          from { opacity: 0; transform: translateY(-5px); }
+          to { opacity: 1; transform: translateY(0); }
+        }
+        .animate-fade-in {
+          animation: fade-in 0.3s ease-out;
+        }
+      `}</style>
     </div>
   );
 }
