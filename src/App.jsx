@@ -43,7 +43,29 @@ const facts = [
   { category: "Silber", question: "Warum müssen Spreizerarme 1 cm geöffnet sein?", answer: "Zur Sichtkontrolle auf drucklosen Zustand." },
   { category: "Silber", question: "Wie kommt man zum Rettungsdatenblatt, wenn keines im Fahrzeug?", answer: "Rettungsdatenbanken (CRS, Euro Rescue, ARBÖ, ÖAMTC)." },
   { category: "Silber", question: "Welche Hinweise stehen im Rettungsdatenblatt?", answer: "Batteriestandorte, Airbags, Hochvoltbatterien, Karosseriestruktur, Tankdeckel usw." },
-  { category: "Silber", question: "Wie erkennt man ein Hybridfahrzeug?", answer: "Orange Kabel, Piktogramme, doppelte Abdeckungen, spezifische Aufkleber usw." }
+  { category: "Silber", question: "Wie erkennt man ein Hybridfahrzeug?", answer: "Orange Kabel, Piktogramme, doppelte Abdeckungen, spezifische Aufkleber usw." },
+
+  // --- TLP Gold ---
+  { category: "Gold", question: "Welches Material darf mit dem Schneidegerät nicht geschnitten werden?", answer: "Gehärtete Teile, Lenksäule, Seitenaufprallschutz, Gurtverankerungen." },
+  { category: "Gold", question: "Wie können geklebte Sicherheitsverbundglasscheiben bei Kraftfahrzeugen herausgenommen werden?", answer: "Mit einer Glassäge oder einer Säbelsäge." },
+  { category: "Gold", question: "Welche Behörde ist bei Unfällen mit Mineralölen auf Gewässern zu verständigen?", answer: "Bezirkshauptmannschaft bzw. das zuständige Magistrat." },
+  { category: "Gold", question: "Was ist bei Unfällen mit elektrifizierten Schienenfahrzeugen unbedingt zu prüfen?", answer: "Ob durch den elektrischen Strom unmittelbare Gefahr besteht." },
+  { category: "Gold", question: "Wer ist für das ordnungsgemäße Abschalten und Erden von elektrifizierten Bahnanlagen verantwortlich?", answer: "Für die ÖBB der Einsatzleiter ÖBB, für die Raaberbahn der Betriebsmanager oder Bereitschaftsdienst." },
+  { category: "Gold", question: "Was ist beim Einsatz von Hebekissen zu beachten?", answer: "Untergrund beachten, gegen Wegrutschen sichern, laufend unterbauen, Kissen vor scharfen Kanten schützen." },
+  { category: "Gold", question: "Wo können Menge, Gebinde, Absender / Empfänger eines Gefahrguttransporters herausgelesen werden?", answer: "Aus den Frachtpapieren." },
+  { category: "Gold", question: "Wie soll die Einsatzstelle bei der Personenrettung aus Fahrzeugen unterteilt werden?", answer: "Innerer Bereich: ca. 5 m, äußerer Bereich: 5–10 m = Bereitstellungsbereich." },
+  { category: "Gold", question: "Wie werden die Öffnungsschritte an einem KFZ bei der Personenrettung bezeichnet?", answer: "Erstöffnung – Versorgungsöffnung – Befreiungsöffnung." },
+  { category: "Gold", question: "Mit welchem Löschmittel wird ein Akkubrand eines Elektrofahrzeuges gelöscht?", answer: "Mit Wasser." },
+  { category: "Gold", question: "Welche Ausrüstung ist beim Ziehen des Servicesteckers des HV-Systems zu tragen?", answer: "Störlichtbogengeschützte Isolierhandschuhe und Gesichtsschutz." },
+  { category: "Gold", question: "Worauf ist beim Arbeiten an einem Elektro- oder Hybridfahrzeug zu achten?", answer: "Keine orangefarbenen Kabel berühren, HV-Batterie nicht beschädigen." },
+  { category: "Gold", question: "Wie kann festgestellt werden, ob sich ein austretender Wasserstoff entzündet hat?", answer: "Mit einer Wärmebildkamera oder durch den Besentest." },
+  { category: "Gold", question: "Wer gibt nach der Bearbeitung einer Ölspur auf der Straße diese wieder für den Verkehr frei?", answer: "Der Straßenerhalter." },
+  { category: "Gold", question: "Wie erkennt man bei Flüssig- oder Erdgasantrieb, dass es sich um ein alternatives Fahrzeug handelt?", answer: "Durch Kennzeichnung 'LPG' oder 'CNG' im Tankdeckel." },
+  { category: "Gold", question: "Wo stehen an der Fahrzeugaußenseite Hinweise auf Gefahrgut?", answer: "Auf der orangen Gefahrentafel und dem Gefahrenzettel." },
+  { category: "Gold", question: "Was bedeuten die Ziffern auf der orangen Warntafel?", answer: "Oben: Gefahrennummer, unten: Stoffnummer." },
+  { category: "Gold", question: "Was sind die wesentlichen Maßnahmen bei einem Gefahrguteinsatz?", answer: "GAMS-Regel: Gefahr erkennen – Absichern – Menschenrettung – Spezialkräfte anfordern." },
+  { category: "Gold", question: "Wie groß ist der durchschnittliche Sicherheitsabstand bei Gefahrgutunfällen?", answer: "30 bis 60 Meter." },
+  { category: "Gold", question: "Worauf sind bei einem Gefahrgutunfall verunfallte Personen zu prüfen?", answer: "Ob sie mit Gefahrgut kontaminiert sind." }
 ];
 
 export default function TLPWissen() {
@@ -68,7 +90,7 @@ export default function TLPWissen() {
       <h1 className="text-3xl font-bold text-center mb-6">🚒 TLP-Wissen leicht gemerkt</h1>
 
       <div className="flex flex-wrap items-center justify-center gap-2 mb-4">
-        {['Alle', 'Bronze', 'Silber'].map((cat) => (
+        {['Alle', 'Bronze', 'Silber', 'Gold'].map((cat) => (
           <button
             key={cat}
             onClick={() => setFilter(cat)}
@@ -97,7 +119,7 @@ export default function TLPWissen() {
           <h2 className="text-lg font-semibold mb-2">{item.question}</h2>
           {openIndex === idx && (
             <div className="mt-2 p-3 rounded bg-green-100 border border-green-300 text-green-900 animate-fade-in">
-              ✅ {item.answer}
+              {item.answer}
             </div>
           )}
         </div>
@@ -107,13 +129,14 @@ export default function TLPWissen() {
         <p className="text-center text-gray-500 mt-6">Keine Einträge gefunden.</p>
       )}
 
-      <style jsx>{`
-        @keyframes fade-in {
-          from { opacity: 0; transform: translateY(-5px); }
-          to { opacity: 1; transform: translateY(0); }
-        }
+      <style>{`
         .animate-fade-in {
-          animation: fade-in 0.3s ease-out;
+          animation: fadeIn 0.3s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+          from { opacity: 0; transform: translateY(-4px); }
+          to { opacity: 1; transform: translateY(0); }
         }
       `}</style>
     </div>
