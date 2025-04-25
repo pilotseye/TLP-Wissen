@@ -49,8 +49,9 @@ const facts = [
 export default function TLPWissen() {
   const [filter, setFilter] = useState("Alle");
   const [search, setSearch] = useState("");
+  const [openIndex, setOpenIndex] = useState(null);
 
-  const filtered = facts.filter(item => {
+  const filtered = facts.filter((item) => {
     const inCategory = filter === "Alle" || item.category === filter;
     const matchesSearch =
       item.question.toLowerCase().includes(search.toLowerCase()) ||
@@ -58,35 +59,26 @@ export default function TLPWissen() {
     return inCategory && matchesSearch;
   });
 
+  const toggleAnswer = (index) => {
+    setOpenIndex(openIndex === index ? null : index);
+  };
+
   return (
     <div className="max-w-3xl mx-auto p-4 space-y-6">
       <h1 className="text-3xl font-bold text-center mb-6">🚒 TLP-Wissen leicht gemerkt</h1>
 
       <div className="flex flex-wrap items-center justify-center gap-2 mb-4">
-        <button
-          onClick={() => setFilter("Alle")}
-          className={`px-4 py-2 rounded ${
-            filter === "Alle" ? "bg-blue-600 text-white" : "bg-gray-200"
-          }`}
-        >
-          Alle
-        </button>
-        <button
-          onClick={() => setFilter("Bronze")}
-          className={`px-4 py-2 rounded ${
-            filter === "Bronze" ? "bg-blue-600 text-white" : "bg-gray-200"
-          }`}
-        >
-          Bronze
-        </button>
-        <button
-          onClick={() => setFilter("Silber")}
-          className={`px-4 py-2 rounded ${
-            filter === "Silber" ? "bg-blue-600 text-white" : "bg-gray-200"
-          }`}
-        >
-          Silber
-        </button>
+        {['Alle', 'Bronze', 'Silber'].map((cat) => (
+          <button
+            key={cat}
+            onClick={() => setFilter(cat)}
+            className={`px-4 py-2 rounded ${
+              filter === cat ? "bg-blue-600 text-white" : "bg-gray-200"
+            }`}
+          >
+            {cat}
+          </button>
+        ))}
         <input
           type="text"
           placeholder="Suche..."
@@ -97,9 +89,15 @@ export default function TLPWissen() {
       </div>
 
       {filtered.map((item, idx) => (
-        <div key={idx} className="bg-white shadow-md rounded p-4 border border-gray-100">
+        <div
+          key={idx}
+          className="bg-white shadow-md rounded p-4 border border-gray-100 cursor-pointer"
+          onClick={() => toggleAnswer(idx)}
+        >
           <h2 className="text-lg font-semibold mb-2">{item.question}</h2>
-          <p className="text-gray-700">{item.answer}</p>
+          {openIndex === idx && (
+            <p className="text-gray-700 mt-2 transition-opacity duration-300 ease-in-out">{item.answer}</p>
+          )}
         </div>
       ))}
 
