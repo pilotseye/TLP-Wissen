@@ -26,7 +26,7 @@ const facts = [
   // --- TLP Silber ---
   { category: "Silber", question: "Wie viele Kabeltrommeln mit 2,5 mm² dürfen verwendet werden?", answer: "Max. zwei Trommeln je 50 m." },
   { category: "Silber", question: "Was bewirkt das Einscheren einer losen bzw. festen Rolle?", answer: "Lose Rolle: ermöglicht eine Verdopplung der Zugkraft an der Last; Feste Rolle: bewirkt eine Richtungsänderung der Zugkraft." },
-  { category: "Silber", question: "Welche Fahrzeugarten haben besondere Antriebe?", answer: "Gas-, Wasserstoff-, Hybrid-, Elektrofahrzeuge." },
+  { category: "Silber", question: "Welche alternativen Antriebsarten kennst du?", answer: "Gas-, Wasserstoff-, Hybrid-, Elektroantrieb." },
   { category: "Silber", question: "Was ist beim Einsatz eines Trennschleifers zu beachten?", answer: "Brandgefahr, Splittergefahr." },
   { category: "Silber", question: "Was tun, wenn Airbag nach Unfall nicht ausgelöst hat?", answer: "Airbagschutz anbringen, Person und sich selbst aus Entfaltungsbereich entfernen." },
   { category: "Silber", question: "Wann darf mit dem Freimachen von Verkehrswegen begonnen werden?", answer: "Wenn Unfallopfer versorgt/abtransportiert und Polizei-Ermittlungen abgeschlossen sind." },
